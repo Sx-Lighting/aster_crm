@@ -1,64 +1,58 @@
 ```mermaid
 flowchart TD
-    %% Início da Prospecção
-    A1([Preenche formulário no Site])
+    %% Fontes de Entrada
+    A1([Preenche formulário<br/>no Site])
     A2([Prospecção Ativa])
     A3([Prospecção Passiva])
-    B1[Cadastra PN como Lead]
-    B2[Cadastra uma Opp de Vendas na Etapa de Prospect]
+    A4([Nova OPP<br/>Cliente existente etc])
+
+    %% Cadastro de Lead
+    B1[Cadastra PN como<br/>Lead (Suspect)]
+    B2[Cadastra uma Opp<br/>na Etapa de Prospect]
+    B3[Prospecção avalia o lead<br/>e preenche o formulário de qualificação]
 
     A1 --> B1
     A2 --> B1
     A3 --> B1
     B1 --> B2
+    B2 --> B3
 
-    %% Decisão: Lead Qualificado
-    C1{Lead Qualificado?}
-    B2 --> C1
+    %% Decisão Qualificação
+    C1{Lead<br/>Qualificado?}
+    B3 --> C1
 
-    C1 -- Não --> C2[Descarta OPP]
+    C1 -- Não --> C2([Descarta Lead])
+    C1 -- Sim --> D1[Cria uma Oportunidade<br/>(Cotação) com Status = Posicionado]
 
-    C1 -- Sim --> D1[Alteração da Responsabilidade para Time de Vendas]
-    D1 --> D2[Preenchimento dos dados da cotação]
-    D2 --> D3[Altera o status para Posicionado]
+    D1 --> D2[Cria uma Tarefa / Agendamento<br/>para equipe de vendas]
+    D2 --> D3[Preenchimento dos dados da cotação<br/>/ tratativas com o cliente]
 
-    %% Entrada alternativa: Nova OPP
-    A4([Nova OPP - Cliente existente ou similar])
-    A4 --> D2
+    A4 --> D3
 
-    %% Processo de Proposta
-    E1[Processo de Precificação]
-    E2[Emissão da Proposta - Documento]
-    E3[Follow-up e Negociação com o cliente]
-    E4{Aceite comercial pelo cliente?}
-    E5[Altera o status para Pendente]
+    %% Processo Comercial
+    E1[Split por I.E<br/>(filial)]
+    E2[Geração do(s) Pedido(s)<br/>Status = "Prometido"]
+    E3[Gerente de Picking]
+    E4[Emissão de Nota Fiscal<br/>(Status = Ganho)]
+    E5([Fim])
+    E6[Processo de Produção]
 
-    D3 --> E1
+    D3 --> F1[Processo de Precificação]
+    F1 --> F2[Emissão da Proposta (Documento)<br/>Status = "Pendente"]
+    F2 --> F3[Follow-up e Negociação<br/>com o cliente]
+
+    F3 --> F4{Aceite comercial<br/>pelo cliente?}
+    F4 -- Não --> F1
+    F4 -- Sim --> F5[Aprovação Financeira]
+    F5 --> F6[Aprovação PCP / Sales Ops]
+    F6 --> E1
+
+    %% Continuação do Pedido
     E1 --> E2
-    E2 --> E3
-    E3 --> E5
-    E5 --> E4
+    E2 --> E6
+    E6 --> E3
+    E3 --> E4
+    E4 --> E5
 
-    E4 -- Não --> E1
-    E4 -- Sim --> F1[Aprovação Sales Ops]
-    F1 --> F2[Aprovação Financeira]
-    F2 --> F3[Aprovação PCP]
-
-    %% Processo de Pedido
-    G1[Split por IE - filial]
-    G2[Geração de Pedido de Vendas]
-    G3[Altera o status para Prometido]
-    G4[Processo de Produção]
-    G5[Gerente de Picking]
-    G6[Emissão de Nota Fiscal]
-    G7[Altera o status no funil para Ganho]
-    G8([Fim])
-
-    F3 --> G1
-    G1 --> G2
-    G2 --> G3
-    G3 --> G4
-    G4 --> G5
-    G5 --> G6
-    G6 --> G7
-    G7 --> G8
+    %% Perda
+    F4 -- Rejeitado --> P1([Perda])
