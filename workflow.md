@@ -13,7 +13,7 @@ flowchart TD
     B4{Lead Qualificado?}
     B5[Descarta Lead]
     B6[Cria Oportunidade - Cotação<br>com status Posicionado]
-    B7[Cria Tarefa / Agendamento<br>para equipe de vendas]
+    B7[Cria Tarefa ou Agendamento<br>para equipe de vendas]
     B8[Preenchimento dos dados da cotação<br>e tratativas com o cliente]
 
     A1 --> B1
@@ -30,12 +30,12 @@ flowchart TD
 
     %% Processo Comercial
     C1[Processo de Precificação]
-    C2[Emissão da Proposta<br>Documento - Status Pendente]
+    C2[Emissão da Proposta<br>Status Pendente]
     C3[Follow-up e negociação<br>com o cliente]
     C4{Aceite comercial pelo cliente?}
     C5[Perda]
     C6[Aprovação Financeira]
-    C7[Aprovação PCP / Sales Opps]
+    C7[Aprovação PCP e Sales Opps]
 
     B8 --> C1
     C1 --> C2
@@ -47,11 +47,11 @@ flowchart TD
 
     %% Pedido e Pós-venda
     D1[Split por IE - filial]
-    D2[Geração de Pedido(s) como rascunho<br>Status = Prometido]
-    D3[Geração de Pedido(s) oficial<br>Status = Prometido]
+    D2[Criação de Pedido como rascunho<br>Status Prometido]
+    D3[Confirmação de Pedido oficial<br>Status Prometido]
     D4[Processo de Produção]
     D5[Gerente de Picking]
-    D6[Emissão da Nota Fiscal<br>Status = Ganho]
+    D6[Emissão da Nota Fiscal<br>Status Ganho]
     D7([Fim])
 
     C7 --> D1
