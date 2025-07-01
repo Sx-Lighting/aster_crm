@@ -23,12 +23,12 @@ flowchart TD
     D2 --> D3[Altera o status para Posicionado]
 
     %% Entrada alternativa: Nova OPP
-    A4([Nova OPP (Cliente existente etc)])
+    A4([Nova OPP - Cliente existente ou similar])
     A4 --> D2
 
     %% Processo de Proposta
     E1[Processo de Precificação]
-    E2[Emissão da Proposta (Documento)]
+    E2[Emissão da Proposta - Documento]
     E3[Follow-up e Negociação com o cliente]
     E4{Aceite comercial pelo cliente?}
     E5[Altera o status para Pendente]
@@ -45,7 +45,7 @@ flowchart TD
     F2 --> F3[Aprovação PCP]
 
     %% Processo de Pedido
-    G1[Split por I.E (filial)]
+    G1[Split por IE - filial]
     G2[Geração de Pedido de Vendas]
     G3[Altera o status para Prometido]
     G4[Processo de Produção]
