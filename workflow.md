@@ -20,18 +20,18 @@ flowchart TD
 
     C1 -- Sim --> D1[Alteração da Responsabilidade para Time de Vendas]
     D1 --> D2[Preenchimento dos dados da cotação]
-    D2 --> D3[Altera o status para "Posicionado"]
+    D2 --> D3[Altera o status para Posicionado]
 
     %% Entrada alternativa: Nova OPP
-    A4([Nova OPP<br/>(Cliente existente etc)])
+    A4([Nova OPP (Cliente existente etc)])
     A4 --> D2
 
     %% Processo de Proposta
     E1[Processo de Precificação]
-    E2[Emissão da Proposta<br/>(Documento)]
-    E3[Follow-up e<br/>Negociação com o cliente]
-    E4{Aceite comercial<br/>pelo cliente?}
-    E5[Altera o status<br/>para "Pendente"]
+    E2[Emissão da Proposta (Documento)]
+    E3[Follow-up e Negociação com o cliente]
+    E4{Aceite comercial pelo cliente?}
+    E5[Altera o status para Pendente]
 
     D3 --> E1
     E1 --> E2
@@ -45,13 +45,13 @@ flowchart TD
     F2 --> F3[Aprovação PCP]
 
     %% Processo de Pedido
-    G1[Split por I.E<br/>(filial)]
+    G1[Split por I.E (filial)]
     G2[Geração de Pedido de Vendas]
-    G3[Altera o status<br/>para "Prometido"]
+    G3[Altera o status para Prometido]
     G4[Processo de Produção]
     G5[Gerente de Picking]
     G6[Emissão de Nota Fiscal]
-    G7[Altera o status no funil<br/>para "Ganho"]
+    G7[Altera o status no funil para Ganho]
     G8([Fim])
 
     F3 --> G1
